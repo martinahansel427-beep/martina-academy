@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Martina Academy 🎓</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              500: '#0284c7',
+              600: '#0369a1',
+              900: '#0c4a6e',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-200 min-h-screen flex flex-col md:flex-row">
+
+  <!-- Sidebar / Navegación -->
+  <aside class="w-full md:w-64 bg-white dark:bg-slate-800 border-b md:border-b-0 md:border-r border-slate-200 dark:border-slate-700 p-4 flex flex-col justify-between">
+    <div>
+      <!-- Logo -->
+      <div class="flex items-center gap-3 mb-8 px-2">
+        <div class="bg-brand-500 text-white p-2.5 rounded-xl text-xl font-bold">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-lg leading-none">Martina</h1>
+          <span class="text-xs text-brand-500 font-semibold uppercase tracking-wider">Academy</span>
+        </div>
+      </div>
+
+      <!-- Menú -->
+      <nav class="space-y-1">
+        <a href="#inicio" class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-500 font-medium text-sm">
+          <i class="fa-solid fa-house w-5"></i> Inicio
+        </a>
+        <a href="#materias" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50 font-medium text-sm">
+          <i class="fa-solid fa-book-open w-5"></i> Materias
+        </a>
+        <a href="#planificador" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50 font-medium text-sm">
+          <i class="fa-solid fa-calendar-days w-5"></i> Planificador
+        </a>
+        <a href="#biblioteca" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50 font-medium text-sm">
+          <i class="fa-solid fa-bookmark w-5"></i> Biblioteca
+        </a>
+        <a href="#tutor" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50 font-medium text-sm">
+          <i class="fa-solid fa-robot w-5"></i> Tutor IA
+        </a>
+      </nav>
+    </div>
+
+    <!-- Switch de Modo Oscuro -->
+    <div class="pt-4 border-t border-slate-200 dark:border-slate-700">
+      <button id="themeToggle" class="w-full flex items-center justify-between px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 text-xs font-medium">
+        <span><i class="fa-solid fa-moon mr-2"></i> Modo Oscuro</span>
+        <span id="themeState" class="text-slate-400">On</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Contenido Principal -->
+  <main class="flex-1 p-4 md:p-8 space-y-6 max-w-7xl mx-auto w-full">
+    
+    <!-- Top Header / Perfil y Stats -->
+    <header class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+      <div>
+        <h2 class="text-2xl font-bold">¡Hola, Martina! 👋</h2>
+        <p class="text-xs text-slate-500 dark:text-slate-400">5.º Año · Plan de estudio 2026</p>
+      </div>
+
+      <!-- Métricas rápidas -->
+      <div class="flex items-center gap-4 w-full sm:w-auto justify-between">
+        <div class="flex items-center gap-2 bg-amber-500/10 text-amber-600 dark:text-amber-400 px-3 py-1.5 rounded-lg border border-amber-500/20 text-xs font-semibold">
+          <i class="fa-solid fa-fire text-amber-500"></i> 5 Días Racha
+        </div>
+        <div class="flex items-center gap-2 bg-purple-500/10 text-purple-600 dark:text-purple-400 px-3 py-1.5 rounded-lg border border-purple-500/20 text-xs font-semibold">
+          <i class="fa-solid fa-bolt text-purple-500"></i> 1,250 XP
+        </div>
+      </div>
+    </header>
+
+    <!-- Barra de Progreso General -->
+    <section class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm">
+      <div class="flex justify-between items-center mb-2">
+        <span class="text-sm font-semibold">Progreso General del Año</span>
+        <span class="text-sm font-bold text-brand-500">18%</span>
+      </div>
+      <div class="w-full bg-slate-100 dark:bg-slate-700 h-3 rounded-full overflow-hidden">
+        <div class="bg-brand-500 h-full rounded-full transition-all duration-500" style="width: 18%"></div>
+      </div>
+    </section>
+
+    <!-- Grid de Materias principales -->
+    <section>
+      <h3 class="text-lg font-bold mb-4">Mis Materias</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="gridMaterias">
+        <!-- Las materias se renderizan dinámicamente con JavaScript -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Lógica en JavaScript -->
+  <script>
+    // Configuración inicial de materias
+    const materias = [
+      { id: 'literatura', nombre: 'Literatura', icono: 'fa-book', color: 'bg-rose-500', avance: 25 },
+      { id: 'historia', nombre: 'Historia', icono: 'fa-landmark', color: 'bg-amber-500', avance: 15 },
+      { id: 'geografia', nombre: 'Geografía', icono: 'fa-earth-americas', color: 'bg-emerald-500', avance: 10 },
+      { id: 'ciudadania', nombre: 'Política y Ciudadanía', icono: 'fa-scale-balanced', color: 'bg-indigo-500', avance: 30 },
+      { id: 'quimica', nombre: 'Introducción a la Química', icono: 'fa-flask', color: 'bg-cyan-500', avance: 5 },
+      { id: 'economia', nombre: 'Elem. de Micro y Macroeconomía', icono: 'fa-chart-line', color: 'bg-blue-500', avance: 40 },
+      { id: 'derecho', nombre: 'Derecho', icono: 'fa-gavel', color: 'bg-purple-500', avance: 0 },
+      { id: 'gestion', nombre: 'Gestión Organizacional', icono: 'fa-briefcase', color: 'bg-orange-500', avance: 0 },
+      { id: 'contabilidad', nombre: 'Sist. de Información Contable', icono: 'fa-calculator', color: 'bg-teal-500', avance: 20 },
+      { id: 'ingles', nombre: 'Inglés', icono: 'fa-language', color: 'bg-sky-500', avance: 50 },
+      { id: 'ef', nombre: 'Educación Física', icono: 'fa-person-running', color: 'bg-lime-500', avance: 100 }
+    ];
+
+    // Renderizar tarjetas de materias
+    const container = document.getElementById('gridMaterias');
+    materias.forEach(materia => {
+      container.innerHTML += `
+        <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm hover:border-brand-500 transition-all cursor-pointer group">
+          <div class="flex items-center justify-between mb-4">
+            <div class="${materia.color} text-white p-3 rounded-xl">
+              <i class="fa-solid ${materia.icono} text-xl"></i>
+            </div>
+            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700">${materia.avance}%</span>
+          </div>
+          <h4 class="font-bold text-base group-hover:text-brand-500 transition-colors">${materia.nombre}</h4>
+          <div class="w-full bg-slate-100 dark:bg-slate-700 h-1.5 rounded-full mt-3 overflow-hidden">
+            <div class="${materia.color} h-full" style="width: ${materia.avance}%"></div>
+          </div>
+        </div>
+      `;
+    });
+
+    // Control de tema Oscuro / Claro
+    const themeBtn = document.getElementById('themeToggle');
+    themeBtn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+    });
+  </script>
+</body>
+</html>
